@@ -1,0 +1,22 @@
+{
+  "name": "tweets",
+  "authors": [
+    "ampersand <ampersand@underscore.space>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "CC-BY-NC-4.0",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ng-isvisible": "^1.0.0-alpha1",
+    "ng-cleantoast": "^1.0.0-alpha1"
+  }
+}
