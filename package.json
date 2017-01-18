@@ -2,10 +2,21 @@
   "name": "tweets",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server/"
   },
   "author": "",
-  "license": "CC-BY-NC-4.0"
+  "license": "CC-BY-NC-4.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/underscoredotspace/tweets.git"
+  },
+  "bugs": {
+    "url": "https://github.com/underscoredotspace/tweets/issues"
+  },
+  "homepage": "https://github.com/underscoredotspace/tweets",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
