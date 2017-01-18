@@ -1,4 +1,4 @@
-<html>
+<html data-ng-app="tweetsApp">
 <head>
     <title>Tweets</title>
     <link rel="stylesheet" href="style.css">
@@ -8,8 +8,13 @@
     <script src="../../bower_components/ng-cleantoast/src/ng-cleantoast.js"></script>
     <script src="../../bower_components/ng-isvisible/src/ngIsVisible.js"></script>
 </head>
-<body data-ng-app="tweetsApp">
-    
+<body data-ng-controller="tweetsController">
+    <div vis-outer class="tweet-column">
+        <div vis-inner class="tweet" data-ng-class="{'isvisible': visible}" data-ng-repeat="tweet in tweets track by $index">{{tweet.text}}</div>
+    </div>
+
+    <ct-toasts class="ct-toasts"></ct-toasts>
+    <script src="tweets.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
