@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "ng-isvisible": "^1.0.0-alpha1",
-    "ng-cleantoast": "^1.0.0-alpha1"
+    "ng-cleantoast": "^1.0.0-alpha1",
+    "underscore": "^1.8.3"
   }
 }

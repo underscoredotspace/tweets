@@ -1,13 +1,28 @@
 angular.module('ngTweetomatic', [])
 
+.constant('_', window._)
+
 .service('tweets', function() {
     return {
-        get: function(from, count) {
-            tweets = [];
-            for (i = from; ((i<from+count)||(!this._tweets[i])); i++) {
-                tweets.push(this._tweets[i]);
-            }
-            return tweets;
+        getafter: function(from, count) {
+          if (from != this._tweets[this._tweets.length-1].id) {
+            start = this._tweets.indexOf(_.findWhere(this._tweets, {id: from}))+1;
+            return this._tweets.slice(start, count+start);
+          } else {
+            return [];
+          }
+        },
+        getbefore: function(from, count) {
+          if (from != this._tweets[0].id) {
+            end = this._tweets.indexOf(_.findWhere(this._tweets, {id: from}));
+            console.log(end);
+            return this._tweets.slice(end-count, end);
+          } else {
+            return [];
+          }
+        },
+        get: function(count) {
+          return this._tweets.slice(0, count);
         },
         _tweets: [
             { "id" : 684110988740792300, "text" : "@NatWest_Help its the 4th jan i have direct debits going out at the start of every month which havent shown up on mini statement!!" },
