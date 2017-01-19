@@ -8,10 +8,16 @@
     <script src="../../bower_components/angularjs/angular.js"></script>
     <script src="../../bower_components/ng-cleantoast/src/ng-cleantoast.js"></script>
     <script src="../../bower_components/ng-isvisible/src/ngIsVisible.js"></script>
+    <!-- Alt Libs
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/underscoredotspace/ng-isvisible/master/src/ng-isvisible.js"></script>
+    <script src="https://cdn.rawgit.com/underscoredotspace/ng-cleantoast/master/src/ng-cleantoast.js"></script>
+      -->
 </head>
 <body data-ng-controller="tweetsController">
     <div vis-outer class="tweet-column">
-        <div vis-inner class="tweet" data-ng-class="{'isvisible': visible}" data-ng-repeat="tweet in tweets track by $index">{{tweet.text}}</div>
+        <div vis-inner class="tweet anchor" id="{{tweet.id}}" data-ng-class="{'isvisible': tweet.visible}" data-ng-repeat="tweet in tweets track by $index">{{tweet.text}}</div>
     </div>
 
     <ct-toasts class="ct-toasts"></ct-toasts>

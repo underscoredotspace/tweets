@@ -15,7 +15,6 @@ angular.module('ngTweetomatic', [])
         getbefore: function(from, count) {
           if (from != this._tweets[0].id) {
             end = this._tweets.indexOf(_.findWhere(this._tweets, {id: from}));
-            console.log(end);
             return this._tweets.slice(end-count, end);
           } else {
             return [];
