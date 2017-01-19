@@ -1,9 +1,8 @@
-angular.module('tweetsApp', ['ngCleanToast', 'ngIsVisible', 'ngTweetomatic'])
+angular.module('tweetsApp', ['ngIsVisible', 'ngTweetomatic'])
 
-.controller('tweetsController', function($scope, $filter, $anchorScroll, tweets, toasts) {
+.controller('tweetsController', function($scope, tweets) {
     $scope.tweets = [];
-    $scope.gettweets = function(pos, id, count) {;
-      //firstVisible = $filter('filter')($scope.tweets, {visible: true})[0]
+    $scope.gettweets = function(pos, id, count) {
       if (pos==1) {
         newtweets = tweets.getafter(id, count);
         newtweets.forEach(function(newtweet) {
@@ -16,8 +15,6 @@ angular.module('tweetsApp', ['ngCleanToast', 'ngIsVisible', 'ngTweetomatic'])
           $scope.tweets.unshift(newtweet);
         })
         $scope.tweets.splice($scope.tweets.length-newtweets.length, newtweets.length);
-
-        //$anchorScroll(firstVisible.id);
       }
     }
     
@@ -27,7 +24,7 @@ angular.module('tweetsApp', ['ngCleanToast', 'ngIsVisible', 'ngTweetomatic'])
     })
 })
 
-.directive('tweet', function(toasts, $anchorScroll) {
+.directive('tweet', function($filter, $anchorScroll) {
     return {
         restrict: 'C',
         link: function(scope, element, attr) {
@@ -35,11 +32,16 @@ angular.module('tweetsApp', ['ngCleanToast', 'ngIsVisible', 'ngTweetomatic'])
                 wasVisible = scope.tweet.visible;
                 scope.tweet.visible = visible;
                 if (visible && !wasVisible) {
+                  firstVisible = $filter('filter')(scope.$parent.tweets, {visible: true})[0].id
                   if (scope.$last) {
                     numTweets = scope.$parent.gettweets(1, scope.tweet.id, 5);
+                    scope.$apply();
+                    $anchorScroll(firstVisible);
                   }
                   if (scope.$first) {
                     numTweets = scope.$parent.gettweets(0, scope.tweet.id, 5);
+                    scope.$apply();
+                    $anchorScroll(firstVisible);
                   }
                 }
             });
